@@ -11,7 +11,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   belongs_to :admin, class_name: 'User'
-  
+  has_many :attendances
+  has_many :users, through: :attendances
   private 
 
   def start_date_in_future
