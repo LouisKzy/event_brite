@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/index'
+  get 'static_pages/secret'
   devise_for :users
-
+  resources :static_pages, only: [:index, :secret]
   resources :attendances
   resources :events
   resources :users
@@ -8,5 +10,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'events#index'
+  root 'static_pages#index'
 end
