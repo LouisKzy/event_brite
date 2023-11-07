@@ -1,2 +1,12 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card custom-card mx-auto"> <!-- Utilisez votre classe personnalisée -->
+        <div class="card-body">
+          <h5 class="card-title custom-card-title"><%= @event.title %></h5>
+          <p class="card-text custom-card-text"><%= @event.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

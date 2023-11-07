@@ -1,2 +1,21 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3 text-center">Tous les événements à venir !</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card mb-4 custom-card"> <!-- Utilisez votre classe personnalisée -->
+          <div class="card-body">
+            <h5 class="card-title custom-card-title"><%= event.title %></h5>
+            <p class="card-text custom-card-text"><%= event.description %></p>
+            <a href="<%= event_path(event) %>" class="btn btn-primary">Voir plus</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
