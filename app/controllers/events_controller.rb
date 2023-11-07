@@ -9,7 +9,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-
   end
 
   def edit
@@ -18,20 +17,32 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.admin = current_user
     if @event.save
-      redirect_to event_index_path, notice: "L'evenement a été crée !"
+      redirect_to @event, notice: "L'événement a été créé avec succès."
+    else
+      render 'new'
     end
   end
 
   def update
     @event = Event.find(params[:id])
-    if @event.update(gossip_params)
-      redirect_to gossip_path(@gossip), notice: 'Le potin a été mis à jour avec succès!'
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: "L'événement a été mis à jour avec succès!"
     else
       render 'edit'
     end
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path, notice: "L'événement a été supprimé avec succès!"
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :description, :start_date, :duration, :price, :location, :admin_id)
   end
 end

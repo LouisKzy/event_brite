@@ -4,22 +4,25 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="navbar-nav mr-auto"> <!-- Utilisation de mr-auto pour aligner les éléments à droite -->
+    <div class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link btn btn-danger" %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link btn btn-danger btn-sm" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Secret Page", static_pages_secret_path, class: "nav-link btn btn-primary" %>
+          <%= link_to "Profile", user_path(current_user), class: "nav-link btn btn-primary btn-sm" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Secret Page", static_pages_secret_path, class: "nav-link btn btn-primary btn-sm" %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Sign In", new_user_session_path, class: "nav-link btn btn-primary" %>
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link btn btn-primary btn-sm" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn btn-success" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn btn-success btn-sm" %>
         </li>
       <% end %>
-    </ul>
+    </div>
   </div>
 </nav>
