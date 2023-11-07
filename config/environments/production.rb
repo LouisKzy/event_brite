@@ -4,12 +4,11 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'in-v3.mailjet.com',
     port: 587,
-    domain: 'gmail.com',
-    user_name: ENV['GMAIL_LOGIN'],
-    password: ENV['GMAIL_PWD'],
-    authentication: 'plain',
+    user_name: ENV['MAILJET_LOGIN'],
+    password: ENV['MAILJET_PWD'],
+    authentication: :plain,
     enable_starttls_auto: true
   }
   # Code is not reloaded between requests.
