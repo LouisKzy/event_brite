@@ -1,0 +1,25 @@
+<p>Its a win boyyy</p>
+<% @users.each do |user| %>
+    <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card custom-card"> <!-- Utilisez votre classe personnalisée -->
+          <div class="card-body">
+            <h1 class="card-title">Profile n° <%= user.id %> </h1>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Prenom:</strong> <%= user.first_name %></p>
+            <p><strong>Nom:</strong><%= user.last_name %> </p>
+            <p><strong>Description:</strong> <%= user.description %></p>
+            <h2>Événements créés par cet utilisateur :</h2>
+            <ul>
+              <% user.administered_events.each do |event| %>
+                <li><%= link_to event.title, event_path(event) %></li>
+              <% end %>
+            </ul>
+            <%= button_to "Supprimer", @user, method: :delete, class:"btn btn-outline-danger ", data: {turbo: false} %>         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

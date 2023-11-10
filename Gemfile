@@ -2,7 +2,11 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
+
+gem "stripe"
+
 gem "devise"
+
 gem "faker"
 
 gem "table_print"

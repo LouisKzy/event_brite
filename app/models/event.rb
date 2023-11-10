@@ -11,13 +11,14 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   belongs_to :admin, class_name: 'User'
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :users, through: :attendances
+  has_many :participants, through: :attendances, source: :user
   private 
 
   def start_date_in_future
     if start_date.present? && start_date <= DateTime.now
-      errors.add(:start_date, "doit être dans le futur")
+      errors.add(:start_date, "doit être une date future")
     end
   end
 

@@ -1,12 +1,19 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="card custom-card mx-auto"> <!-- Utilisez votre classe personnalisée -->
-        <div class="card-body">
+        <div class="card-body mt-4 mb-4">
           <h5 class="card-title custom-card-title"><%= @event.title %></h5>
-          <p class="card-text custom-card-text"><%= @event.description %></p>
+          <p class="card-text custom-card-text">Commence le<%= @event.start_date %></p>
+          <p class="card-text custom-card-text">Durée :<%= @event.duration %> minutes</p>
+          <p class="card-text custom-card-text">Description : <%= @event.description %></p>
+          <p class="card-text custom-card-text">Prix : <%= @event.price %> €</p>
+          <p class="card-text custom-card-text">Lieu : <%= @event.location %></p>
+          <p class="card-text custom-card-text">Organisé par : <%= @event.admin.first_name %> <%= @event.admin.last_name %></p>
+          <%# <p class="card-text custom-card-text">Nombre de participants : <%= @event.attendance.count %></p> %>
         </div>
       </div>
+      <%= button_to "Passer commande (NEXT GEN)", checkout_create_path(total: @event.price, event_id: @event.id), class: "btn btn-primary mt-4", data: {turbo: false} %>
     </div>
   </div>
 </div>

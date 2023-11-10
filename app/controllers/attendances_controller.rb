@@ -1,22 +1,22 @@
 class AttendancesController < ApplicationController
-  def index
-  end
-
+  before_action :authenticate_user!
   def new
-  end
-
-  def show
-  end
-
-  def edit
+    @attendance = Attendance.new
   end
 
   def create
+    @event = Event.find(params[:event_id])
+    @attendance = @event.attendances.new(user_id: current_user.id, stripe_customer_id: params[:stripe_customer_id])
+
+    if @attendance.save
+      update_event_attendance_count
+      redirect_to @event, notice: "Vous participez maintenant à l'événement!"
+    else
+      redirect_to @event, alert: "Erreur lors de la participation à l'événement."
+    end
   end
 
-  def update
-  end
+  private
 
-  def destroy
-  end
+
 end
