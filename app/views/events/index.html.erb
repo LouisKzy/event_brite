@@ -1,19 +1,16 @@
-<div class="jumbotron">
-  <div class="container mb-4">
-    <h1 class="display-3 text-center">Tous les événements à venir !</h1>
-    <%= link_to "Créer un nouvel événement", new_event_path, class: "btn btn-primary btn-lg" %>
+<%= render 'events/indexbanner' %>
+  <div class="mt-1 mb-1 ">
+    <h2 class="text-center"> Les dix derniers évenements </h2>
   </div>
-</div>
-
 <div class="container">
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-md-4">
-        <div class="card mb-4 custom-card"> <!-- Utilisez votre classe personnalisée -->
-          <div class="card-body">
-            <h5 class="card-title custom-card-title"><%= event.title %></h5>
-            <p class="card-text custom-card-text"><%= event.description %></p>
-            <a href="<%= event_path(event) %>" class="btn btn-primary">Voir plus</a>
+        <div class="custom-card bg-dark text-white"> <!-- Utilisez votre classe personnalisée -->
+          <div class="card-body mt-1 mb-1">
+            <h5 class="card-title text-center mb-1"><%= event.title %></h5>
+            <p class="card-text mt-2"><%= event.description %></p>
+            <a href="<%= event_path(event) %>" class="btn btn-primary btn-sm position-end">Voir plus</a>
           </div>
         </div>
       </div>
