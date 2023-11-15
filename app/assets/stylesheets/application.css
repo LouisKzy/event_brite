@@ -13,19 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.custom-card {
-  background-color: #f0f0f0;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.custom-card-title {
-  font-size: 1.5rem;
-  color: #007bff;
-}
-
-.custom-card-text {
-  font-size: 1rem;
-  color: #333;
-}
