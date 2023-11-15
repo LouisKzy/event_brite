@@ -42,6 +42,12 @@ class EventsController < ApplicationController
 
   private
 
+  def can_edit
+    if current_user == @event.admin_id
+      
+    end
+  end
+
   def event_params
     params.require(:event).permit(:title, :description, :start_date, :duration, :price, :location, :admin_id)
   end
